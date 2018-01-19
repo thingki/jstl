@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.iot.test.DAO.CustomerDAO;
 import com.iot.test.common.DBCon;
 import com.iot.test.common.DBUtil;
@@ -49,17 +51,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 	
 	@Override
-	public int updateCustomer(Customer cus) {
+	public int updateCustomer(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = "update from customer set customername=?, city=?, country=? where customerid=?";
 		try{
 			con = DBCon.getCon();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, cus.getCustomerName());
-			ps.setString(2, cus.getCity());
-			ps.setString(2, cus.getCountry());
-			ps.setInt(4, cus.getCustomerId());
+			ps.setString(1, req.getParameter("customerName"));
+			ps.setString(2, req.getParameter("city"));
+			ps.setString(2, req.getParameter("country"));
+			ps.setString(4, req.getParameter("updateKey"));
 			return ps.executeUpdate();
 			
 		}catch(Exception e) {
@@ -72,14 +74,14 @@ public class CustomerDAOImpl implements CustomerDAO {
 	}
 
 	@Override
-	public int deleteCustomer(String deleteKey)  {
+	public int deleteCustomer(HttpServletRequest req)  {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = "delete from customer where customerid=?";
 		try{
 			con = DBCon.getCon();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, deleteKey);
+			ps.setString(1, req.getParameter("deleteKey"));
 			return ps.executeUpdate();
 			
 		}catch(Exception e) {

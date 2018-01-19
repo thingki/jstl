@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="customer">
+  <select id="selectCustomer" parameterType="map" resultType="com.iot.test.vo.Customer">
+  	SELECT
+  	*
+  	fROM CUSTOMER
+  	order by ${str};<!-- 우리가 넣은 값!! 스트링으로 '' -->
+  </select>
+  <update id="UpdateCustomer" parameterType="customer"> 
+  <!-- <typeAlias type="com.iot.test.vo.Customer" alias="customer"/>를 줄인거 -->
+  update customer
+  set customerName = #{customerName} <!-- 자동으로 '' 찍힘! -->
+  where customerId = #{customerId}
+  </update>
+  </mapper>

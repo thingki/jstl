@@ -7,8 +7,8 @@ public interface CustomerService {
 	public void getCustomerList(HttpServletRequest req);
 	public void getCustomer(HttpServletRequest req);
 	public void insertCustomer(HttpServletRequest req);
-	public void updateCustomer(HttpServletRequest req);
-	public void deleteCustomer(HttpServletRequest req);
+	public int updateCustomer(HttpServletRequest req);
+	public int deleteCustomer(HttpServletRequest req);
 	
 
 }

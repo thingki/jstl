@@ -51,13 +51,42 @@ public class JspServlet extends HttpServlet{
 		}else if(uri.indexOf("class/list")!=-1) {			
 			ClassService cs = new ClassServiceImpl();
 			cs.getClassList(req);
+		}else if(uri.indexOf("class/upanddel")!=-1) {
+			ClassService cs = new ClassServiceImpl();
+			String deleteKey = req.getParameter("deleteName");
+			String updateKey = req.getParameter("updateName");
+			if(deleteKey!=null) {
+				int result = cs.deleteClass(req);
+				if(result>=1) {
+					System.out.println("삭제성공");
+				}else {
+					System.out.println("삭제실패");
+				}
+			}
+			if(updateKey!=null) {
+				int result = cs.updateClass(req);
+				if(result>=1) {
+					System.out.println("수정성공");
+				}else {
+					System.out.println("수정실패");
+				}
+			}
+			System.out.println(uri);
+			uri=uri.replace("upanddel.jsp", "list");
+			System.out.println(uri);
+			cs.getClassList(req);
 		}else if(uri.indexOf("customer/list")!=-1) {
 			CustomerService cs = new CustomerServiceImpl();
 			cs.setCustomerList(req);
 		}else if(uri.indexOf("customer/insert")!=-1) {
 			CustomerService cs = new CustomerServiceImpl();
 			cs.insertCustomer(req);
+		}else if(uri.indexOf("customer/upanddel")!=-1) {
+			String deleteKey = req.getParameter("deleteKey");
+			String updateKey = req.getParameter("updateKey");
+			
 		}
+			
 		
 		uri = "/WEB-INF"+uri+".jsp";		
 		RequestDispatcher rd = req.getRequestDispatcher(uri);

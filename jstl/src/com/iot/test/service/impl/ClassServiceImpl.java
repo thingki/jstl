@@ -68,15 +68,15 @@ public class ClassServiceImpl implements com.iot.test.service.ClassService {
 	}
 
 	@Override
-	public void updateClass(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-
+	public int updateClass(HttpServletRequest req) {
+		int result = cdao.updateClass(req);
+		return result;
 	}
 
 	@Override
-	public void deleteClass(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-
+	public int deleteClass(HttpServletRequest req) {
+		int result = cdao.deleteClass(req);
+		return 0;
 	}
 
 }

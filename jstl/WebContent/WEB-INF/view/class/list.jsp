@@ -27,13 +27,24 @@ if(SerchCiNameValue==null){
 <th><a href="${root}/view/class/list?order=cino&type=${type}">번호</a></th>
 <th><a href="${root}/view/class/list?order=ciname&type=${type}">이름</a></th>
 <th><a href="${root}/view/class/list?order=cidesc&type=${type}">설명</a></th>
+<th class="text-center" data-field="BTN"><em class="glyphicon glyphicon-wrench"></em></th>
 </tr>
+
 <c:forEach items="${classList}" var="ci">
+<!-- form은 다 가져온다!! name value // req.getParameter("네임이름") 하면 벨류 가저옴!! -->
+
+<form action="${root}/view/class/upanddel.jsp">
 <tr>
-<th>${ci.ciNo}</th>
-<th>${ci.ciName}</th>
-<th>${ci.ciDesc}</th>
+<th class='text-center'>${ci.ciNo}</th>
+<th class='text-center'><input class='text-center' type ='text' name="ciName" value="${ci.ciName}"></th>
+<th class='text-center'><input class='text-center' type ='text' name="ciDesc" value="${ci.ciDesc}"></th>
+
+<th class='text-center'>
+<button class="btn btn-default" name="updateName" value="${ci.ciNo}"><em class="glyphicon glyphicon-scissors"></em></button>
+<button class="btn btn-danger" name="deleteName" value="${ci.ciNo}"><em class="glyphicon glyphicon-trash"></em></button>
+</th>
 </tr>
+</form>
 </c:forEach>
 </table>
 </body>

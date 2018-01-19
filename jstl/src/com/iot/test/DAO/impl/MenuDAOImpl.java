@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.iot.test.DAO.MenuDAO;
-import com.iot.test.test.DBConTest;
+import com.iot.test.common.DBCon;
 import com.iot.test.common.DBUtil;
+import com.iot.test.test.DBConTest;
 import com.iot.test.vo.MenuInfo;
 
 public class MenuDAOImpl implements MenuDAO {
@@ -25,7 +26,7 @@ public class MenuDAOImpl implements MenuDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 
-		con = DBConTest.getCon();
+		con = DBCon.getCon();
 	
 		try {
 			ps = con.prepareStatement(sql);

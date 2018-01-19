@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.iot.test.DAO.ClassDAO;
 import com.iot.test.common.DBCon;
 import com.iot.test.common.DBUtil;
@@ -62,14 +64,33 @@ public class ClassDAOImpl implements ClassDAO {
 	}
 
 	@Override
-	public int updateClass(ClassInfo ci) {
-		// TODO Auto-generated method stub
+	public int updateClass(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "update class_info set ciname=?, cidesc=? where cino=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1, req.getParameter("ciName"));
+			ps.setString(2, req.getParameter("ciDesc"));
+			ps.setString(3, req.getParameter("updateName"));
+			return ps.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+		}
+		
+		
 		return 0;
 	}
 
 	@Override
-	public int deleteClass(ClassInfo ci) {
-		// TODO Auto-generated method stub
+	public int deleteClass(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement ps = null;
 		return 0;
 	}
 

@@ -47,21 +47,18 @@ if(SerchCustomerNameValue==null){
 			</tr>
 		</c:if>
 		<c:forEach items="${customerList}" var="customer">
+		<form action="${root}/view/customer/upanddel">
 			<tr>
 				<th class='text-center' Style="color: white">${customer.customerId}</th>
-				<th class='text-center'><input type ='text' id="${customer.customerName}${customer.customerId}" value="${customer.customerName}" class='text-center'></th>
-				<th class='text-center'><input type ='text' id="${customer.city}${customer.customerId}" value="${customer.city}" class='text-center'></th>
-				<th class='text-center'><input type ='text' id="${customer.country}${customer.customerId}" value="${customer.country}" class='text-center'></th>
+				<th class='text-center'><input type ='text' name="customerName" value="${customer.customerName}" class='text-center'></th>
+				<th class='text-center'><input type ='text' name="city" value="${customer.city}" class='text-center'></th>
+				<th class='text-center'><input type ='text' name="country" value="${customer.country}" class='text-center'></th>
 				<th class='text-center'>
-				<a class="btn btn-default" 
-				href="${root}/customer/update?updateKey=${customer.customerId}${customer.customerName}"
-				><em class="glyphicon glyphicon-scissors"></em></a>
-				
-				
-				<a class="btn btn-danger" 
-				href="${root}/customer/delete?deleteKey=${customer.customerId}"><em class="glyphicon glyphicon-trash"></em></a>
+				<button class="btn btn-default" name="updateKey" value="${customer.customerId}"><em class="glyphicon glyphicon-scissors"></em></button>
+				<button class="btn btn-danger" name="deleteKey" value="${customer.customerId}"><em class="glyphicon glyphicon-trash"></em></button>
 				</th>
 			</tr>
+		</form>
 		</c:forEach>
 	</table>
 

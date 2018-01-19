@@ -2,6 +2,8 @@ package com.iot.test.DAO;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.iot.test.vo.Customer;
 
 public interface CustomerDAO {
@@ -9,7 +11,7 @@ public interface CustomerDAO {
 	public List<Customer> selectCustomerList(Customer cus);
 	public Customer selectCustomer(Customer cus);
 	public int inserCustomer(Customer cus);
-	public int updateCustomer(Customer cus);
-	public int deleteCustomer(String updateKey);
+	public int updateCustomer(HttpServletRequest req);
+	public int deleteCustomer(HttpServletRequest req);
 
 }

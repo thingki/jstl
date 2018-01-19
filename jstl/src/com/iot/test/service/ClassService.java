@@ -7,8 +7,8 @@ public interface ClassService {
 	public void getClassList(HttpServletRequest req);
 	public void getClass(HttpServletRequest req);
 	public void insertClass(HttpServletRequest req);
-	public void updateClass(HttpServletRequest req);
-	public void deleteClass(HttpServletRequest req);
+	public int updateClass(HttpServletRequest req);
+	public int deleteClass(HttpServletRequest req);
 	
 
 }

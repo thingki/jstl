@@ -9,22 +9,6 @@
 <title>UserList</title>
 </head>
 <body>
-<script>
-function getEl(){
-	request.getElementBy
-}
-
-function checkValue(){
-	var searchType = getEl("searchType").value.trim();
-	var searchStr = getEl("searchStr").value.trim();
-	
-	if(searchType.length==0){
-		alert("검색 종류를 선택하세요");
-		getEl("searchType").focus();
-	}
-}
-</script>
-
 
 <h1>UserList yo man</h1><br>
 <form onsubmit="return checkValue()">
@@ -37,8 +21,7 @@ function checkValue(){
 </select>
 
 
-<input type="text" placeholder="검색" name="SearchStr" value="<%=SearchStrValue%>">
-<input type="submit" value="Serch" class="btn btn-primary">
+
 </form>
 <table class="table table-hover" border="1">
 <tr>

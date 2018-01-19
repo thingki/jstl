@@ -44,22 +44,16 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public void updateCustomer(HttpServletRequest req) {
-		Customer cus = null;
-		String updateKey = (String)req.getParameter("updateKey"); //번호 나옴!!
-		req.getAttribute("");
-		System.out.println(updateKey);
-		int result = cdao.updateCustomer(cus);
+	public int updateCustomer(HttpServletRequest req) {
+		int result = cdao.updateCustomer(req);
+		return result;
 
 	}
 
 	@Override
-	public void deleteCustomer(HttpServletRequest req) {
-		Customer cus = null;
-		String deleteKey = (String)req.getParameter("deleteKey"); //번호 나옴!!
-		req.getAttribute("");
-		System.out.println(deleteKey);
-		int result = cdao.deleteCustomer(deleteKey);
+	public int deleteCustomer(HttpServletRequest req) {
+		int result = cdao.deleteCustomer(req);
+		return result;
 	}
 
 	@Override
