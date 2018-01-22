@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import com.iot.test.DAO.UserDAO;
 import com.iot.test.common.DBCon;
 import com.iot.test.common.DBUtil;
+import com.iot.test.common.MybatisSessionFactory;
 import com.iot.test.vo.UserInfo;
 
 public class UserDAOImpl implements UserDAO {
@@ -17,6 +21,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<UserInfo> selectUserList(UserInfo ui) {
 		ArrayList<UserInfo> userList = new ArrayList<UserInfo>();
+		SqlSessionFactory ssf = MybatisSessionFactory.getSqlSessionFactory();
+		SqlSession ss = ssf.openSession();//기본값은 false true로 바꾸면 오토커밋됨
+		
 		String sql = "select * from user_info where 1=1";
 		if(ui!=null) {
 			sql += " and uiname like ?";

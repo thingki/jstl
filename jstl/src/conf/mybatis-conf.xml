@@ -6,6 +6,7 @@
 	
 	<typeAliases>
 		<typeAlias type="com.iot.test.vo.Customer" alias="customer"	/>
+		<typeAlias type="com.iot.test.vo.UserInfo" alias="userinfo"	/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,6 +24,7 @@
 	
 	<mappers>
 		<mapper resource="sql/customer.xml"/>
+		<mapper resource="sql/userinfo.xml"/>
 	</mappers>
 
 </configuration>

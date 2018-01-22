@@ -62,9 +62,9 @@ public class ClassServiceImpl implements com.iot.test.service.ClassService {
 	}
 
 	@Override
-	public void insertClass(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-
+	public int insertClass(HttpServletRequest req) {
+		int result = cdao.inserClass(req);
+		return result;
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class ClassServiceImpl implements com.iot.test.service.ClassService {
 	@Override
 	public int deleteClass(HttpServletRequest req) {
 		int result = cdao.deleteClass(req);
-		return 0;
+		return result;
 	}
 
 }

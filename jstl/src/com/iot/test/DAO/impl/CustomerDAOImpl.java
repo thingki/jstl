@@ -54,13 +54,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public int updateCustomer(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql = "update from customer set customername=?, city=?, country=? where customerid=?";
+		String sql = "update customer set customername=?, city=?, country=? where customerid=?";
 		try{
 			con = DBCon.getCon();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, req.getParameter("customerName"));
 			ps.setString(2, req.getParameter("city"));
-			ps.setString(2, req.getParameter("country"));
+			ps.setString(3, req.getParameter("country"));
 			ps.setString(4, req.getParameter("updateKey"));
 			return ps.executeUpdate();
 			

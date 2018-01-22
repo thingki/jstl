@@ -9,14 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iot.test.service.ClassService;
+
 import com.iot.test.service.CustomerService;
 import com.iot.test.service.MenuService;
-import com.iot.test.service.UserService;
-import com.iot.test.service.impl.ClassServiceImpl;
+
 import com.iot.test.service.impl.CustomerServiceImpl;
 import com.iot.test.service.impl.MenuServiceImpl;
-import com.iot.test.service.impl.UserServiceImpl;
+
 
 public class CustomerServlet extends HttpServlet {
 

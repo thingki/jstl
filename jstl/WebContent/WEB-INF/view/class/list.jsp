@@ -29,10 +29,10 @@ if(SerchCiNameValue==null){
 <th><a href="${root}/view/class/list?order=cidesc&type=${type}">설명</a></th>
 <th class="text-center" data-field="BTN"><em class="glyphicon glyphicon-wrench"></em></th>
 </tr>
-
-<c:forEach items="${classList}" var="ci">
 <!-- form은 다 가져온다!! name value // req.getParameter("네임이름") 하면 벨류 가저옴!! -->
 
+
+<c:forEach items="${classList}" var="ci">
 <form action="${root}/view/class/upanddel.jsp">
 <tr>
 <th class='text-center'>${ci.ciNo}</th>
@@ -47,5 +47,25 @@ if(SerchCiNameValue==null){
 </form>
 </c:forEach>
 </table>
+
+	<table class="table table-hover">
+	<form action="${root}/view/class/insert.jsp">
+		<thead>
+			<tr>
+				<th class='text-center'>Class Name</th>
+				<td><input type="text" name="ciname"
+					class="form-control" placeholder="클래스이름"></td>
+
+				<th class='text-center'>Class Desc</th>
+				<td><input type="text" name="cidesc"
+					class="form-control" placeholder="클래스 설명"></td>
+			</tr>
+			<tr>
+				<td colspan="6">
+				<button class="btn btn-lg btn-secondary btn-block" 	id="Insert" value="Insert" ></button></td>
+			</tr>
+		</tbody>
+		</form>
+	</table>
 </body>
 </html>

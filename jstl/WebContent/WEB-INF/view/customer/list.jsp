@@ -47,7 +47,7 @@ if(SerchCustomerNameValue==null){
 			</tr>
 		</c:if>
 		<c:forEach items="${customerList}" var="customer">
-		<form action="${root}/view/customer/upanddel">
+		<form action="${root}/view/customer/upanddel.jsp">
 			<tr>
 				<th class='text-center' Style="color: white">${customer.customerId}</th>
 				<th class='text-center'><input type ='text' name="customerName" value="${customer.customerName}" class='text-center'></th>
@@ -66,54 +66,25 @@ if(SerchCustomerNameValue==null){
 		<thead>
 			<tr>
 				<th class='text-center'>Customer Name</th>
-				<td><input type="text" id="customerName" name="customerName"
+				<td><input type="text" name="customerName"
 					class="form-control" placeholder="이름" autofocus></td>
 
 				<th class='text-center'>City</th>
-				<td><input type="text" id="city" name="city"
+				<td><input type="text" name="city"
 					class="form-control" placeholder="도시"></td>
 
 
 				<th class='text-center'>Country</th>
-				<td><input type="text" id="country" name="country"
+				<td><input type="text" name="country"
 					class="form-control" placeholder="나라"></td>
 			</tr>
 			<tr>
 				<td colspan="6"><input
 					class="btn btn-lg btn-secondary btn-block" type="button"
-					id="Insert" value="Insert" onclick="Insert()"></td>
+					id="Insert" value="Insert"></td>
 			</tr>
 		</tbody>
 	</table>
 </body>
-<script>
-function Insert(){
-	var customerName = $("#customerName").val().trim();
-	var city = $("#city").val().trim();
-	var country = $("#country").val().trim();
-	
-	var param= {customerName:customerName, city:city, country:country};
-	param = "param=" + JSON.stringify(param);
-	$.ajax({
-		url : '<%=root%>/customer/insert',
-		type : 'post',
-		data : param,
-		success:function(res){
-			var obj = JSON.parse(res);
-			alert(obj.msg);
-			if(obj.result=="ok"){
-				location.href="/view/customer/list";
-			}
-		},
-		error:function(xhr,status,error){		
-		}		
-	})
-}
 
-function deleteClass(){
-	var isUpdate = confirm("Update??");
-	int num = ${customer.customerId};
-	alert(num);
-}
-</script>
 </html>

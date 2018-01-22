@@ -58,8 +58,24 @@ public class ClassDAOImpl implements ClassDAO {
 	}
 
 	@Override
-	public int inserClass(ClassInfo ci) {
-		// TODO Auto-generated method stub
+	public int inserClass(HttpServletRequest req) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "insert into class_info(ciname, cidesc)\r\n" + 
+							"values(?,?)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, req.getParameter("ciname"));
+			ps.setString(2, req.getParameter("cidesc"));
+			
+			return ps.executeUpdate();			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+		}
 		return 0;
 	}
 
@@ -81,16 +97,27 @@ public class ClassDAOImpl implements ClassDAO {
 		}finally {
 			DBUtil.close(con);
 			DBUtil.close(ps);
-		}
-		
-		
+		}	
 		return 0;
 	}
 
+	
 	@Override
 	public int deleteClass(HttpServletRequest req) {
 		Connection con = null;
 		PreparedStatement ps = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "delete from class_info where cino=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1, req.getParameter("deleteName"));
+			return ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+		}	
 		return 0;
 	}
 

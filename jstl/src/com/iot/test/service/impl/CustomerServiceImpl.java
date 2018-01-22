@@ -97,7 +97,6 @@ public class CustomerServiceImpl implements CustomerService {
 		}	
 		req.setAttribute("customerList", cdao.selectCustomerList(cus, orderStr, typeStr));
 		req.setAttribute("type", typeStr);
-		req.setAttribute("SerchCustomerName", json);
 	}
 
 }
